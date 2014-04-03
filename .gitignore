@@ -1,0 +1,13 @@
+/_build
+
+/blib
+
+/Build
+
+/MYMETA.json
+
+/MYMETA.yml
+
+.DS_Store
+
+/MANIFEST.bak

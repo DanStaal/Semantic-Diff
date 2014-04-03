@@ -1,6 +1,7 @@
 package Text::SementicDiff;
 use strict;
 use warnings;
+use 5.10.0;   # The '//' operator requires 5.10 or greater.
 
 use Algorithm::Diff qw(diff);
 
@@ -11,8 +12,8 @@ BEGIN {
     @ISA     = qw(Exporter);
 
     #Give a hoot don't pollute, do not export more than needed by default
-    @EXPORT      = qw();
-    @EXPORT_OK   = qw();
+    @EXPORT      = qw(sdiff);
+    @EXPORT_OK   = qw(sementic_diff sdiff);
     %EXPORT_TAGS = ();
 } ## end BEGIN
 
@@ -107,7 +108,7 @@ sub sementic_diff {
             } ## end else [ if ( @$chunk == 1 ) ]
         } ## end foreach my $chunk (@base_diff)
 
-    return @result_diff;
+      return @result_diff;
     } ## end sub sementic_diff
 
 #################### main pod documentation begin ###################

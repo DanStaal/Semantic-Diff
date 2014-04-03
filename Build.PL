@@ -9,7 +9,7 @@ Module::Build->new(
     dist_abstract => 'Create Sementic Diffs of Text Files.',
     create_readme => 1,
     requires      => {
-                  perl            => 'v5.8.0',
+                  perl            => 'v5.10.0',
                   Algorithm::Diff => '1.1902',
                 },
     test_requires => {},
