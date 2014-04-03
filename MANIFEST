@@ -1,0 +1,7 @@
+MANIFEST
+README
+LICENSE
+Todo
+Build.PL
+lib/Text/SementicDiff.pm
+t/001_load.t
