@@ -3,10 +3,10 @@ use Module::Build;
 # See perldoc Module::Build for details of how this works
 
 Module::Build->new(
-    module_name   => 'Text::SementicDiff',
+    module_name   => 'Text::SemanticDiff',
     license       => 'perl',
     dist_author   => 'Daniel Staal - <DStaal@usa.net>',
-    dist_abstract => 'Create Sementic Diffs of Text Files.',
+    dist_abstract => 'Create Semantic Diffs of Text Files.',
     create_readme => 1,
     requires      => {
                   perl            => 'v5.10.0',

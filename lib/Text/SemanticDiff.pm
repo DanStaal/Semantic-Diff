@@ -1,4 +1,4 @@
-package Text::SementicDiff;
+package Text::SemanticDiff;
 use strict;
 use warnings;
 use 5.10.0;    # The '//' operator requires 5.10 or greater.
@@ -13,7 +13,7 @@ BEGIN {
 
     #Give a hoot don't pollute, do not export more than needed by default
     @EXPORT      = qw(sdiff);
-    @EXPORT_OK   = qw(sementic_diff sdiff);
+    @EXPORT_OK   = qw(semantic_diff sdiff);
     %EXPORT_TAGS = ();
 } ## end BEGIN
 
@@ -35,9 +35,9 @@ See Also   :
 
 #################### subroutine header end ####################
 
-sub sdiff { sementic_diff(@_); }
+sub sdiff { semantic_diff(@_); }
 
-sub sementic_diff {
+sub semantic_diff {
     my @old   = @{ $_[0] };
     my @new   = @{ $_[1] };
     my $regex = $_[2] // '\p{Punct}';

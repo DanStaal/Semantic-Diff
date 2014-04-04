@@ -3,7 +3,7 @@ use Test::Differences;
 
 # First Tests check to make sure we have the same output as Algorithm::Diff.
 use Algorithm::Diff qw(diff);
-use Text::SementicDiff qw(sdiff sementic_diff);
+use Text::SemanticDiff qw(sdiff sementic_diff);
 
 my @test1 = qw(a b c);
 my @test2 = qw(a b c);
