@@ -1,5 +1,8 @@
-TODO list for Perl module Text::SementicDiff
+# TODO list for Perl module Text::SemanticDiff
 
-- Nothing yet
+- Write sdiff script.
+- Write patch-to-semantic-patch script.
+- Write semantic-patch-to-patch script.
+- Write more tests.
 
 

@@ -3,7 +3,9 @@ use Test::Differences;
 
 # First Tests check to make sure we have the same output as Algorithm::Diff.
 use Algorithm::Diff qw(diff);
-use Text::SemanticDiff qw(sdiff semantic_diff);
+use Text::SemanticDiff qw(sdiff semantic_diff separator);
+
+is(separator(), '\p{Punct}', 'The sperator regex.');
 
 my @test1 = qw(a b c);
 my @test2 = qw(a b c);

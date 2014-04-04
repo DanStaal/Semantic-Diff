@@ -1,0 +1,25 @@
+---
+abstract: 'Create Semantic Diffs of Text Files.'
+author:
+  - 'Daniel Staal - <DStaal@usa.net>'
+build_requires:
+  Test::Differences: '0'
+configure_requires:
+  Module::Build: '0.42'
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4205, CPAN::Meta::Converter version 2.133380'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Text-SemanticDiff
+provides:
+  Text::SemanticDiff:
+    file: lib/Text/SemanticDiff.pm
+    version: '0.01'
+requires:
+  Algorithm::Diff: '1.1902'
+  perl: v5.10.0
+resources:
+  license: http://dev.perl.org/licenses/
+version: '0.01'

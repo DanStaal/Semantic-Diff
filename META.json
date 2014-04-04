@@ -1,0 +1,47 @@
+{
+   "abstract" : "Create Semantic Diffs of Text Files.",
+   "author" : [
+      "Daniel Staal - <DStaal@usa.net>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.4205",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Text-SemanticDiff",
+   "prereqs" : {
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.42"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Algorithm::Diff" : "1.1902",
+            "perl" : "v5.10.0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Differences" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "Text::SemanticDiff" : {
+         "file" : "lib/Text/SemanticDiff.pm",
+         "version" : "0.01"
+      }
+   },
+   "release_status" : "unstable",
+   "resources" : {
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ]
+   },
+   "version" : "0.01"
+}
