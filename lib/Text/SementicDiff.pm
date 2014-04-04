@@ -51,17 +51,26 @@ sub sementic_diff {
 # Step through the diff.
 # If the chunk is only one line long, it's not a modify, and we can skip the rest.
     foreach my $chunk (@base_diff) {
-      next if @{$chunk} == 1;
+      next if @$chunk == 1;
+
+        # Sort the list...  (It's not?)
+        {
+            use sort 'stable';
+            @$chunk = sort { $a->[1] <=> $b->[1] } @$chunk;
+        }
 
         # Find paired delete-inserts.
         # They will always be two elements with matching line numbers in a row.
-        my $last;
+        my $last = [ undef, '-1', undef ];
         foreach my $line ( @{$chunk} ) {
           next unless $$line[1] == $$last[1];
 
             # Split the old and new lines into sections.
-            my @old_line = split m/$regex/, @$last;
-            my @new_line = split m/$regex/, @$line;
+            my @old_line = split m/(?<=$regex)/, $$last[2];
+            my @new_line = split m/(?<=$regex)/, $$line[2];
+
+            # If they split into full-lines, keep the original.
+          next if ( @old_line == 1 and @new_line == 1 );
 
             # Diff the two lines.
             my $diff_ref = diff( \@old_line, \@new_line );
@@ -80,7 +89,7 @@ sub sementic_diff {
 
         # Single adds or deletes just copy over.
         if ( @$chunk == 1 ) {
-            push @result_diff, $chunk;
+            push @result_diff, \@$chunk;
         }
         else {
             # We build a new array of changes for the rest.
@@ -94,17 +103,17 @@ sub sementic_diff {
                     # No doubles - Only once, on the 'add'.
                     if ( $$line[0] eq '+' ) {
                         push @new_chunk,
-                          ( '!', $$line[1], $semetic_diff[ $$line[1] ] );
+                          [ '!', $$line[1], $semetic_diff[ $$line[1] ] ];
                     }
                 } ## end if ( defined( $semetic_diff...))
                 else    # If we do *not* have an inside-line diff.
                 {
-                    push @new_chunk, @$line;
+                    push @new_chunk, $line;
                 }
             } ## end foreach my $line (@$chunk)
 
             # Now write the new chunk to the results.
-            push @result_diff, @new_chunk;
+            push @result_diff, [@new_chunk];
         } ## end else [ if ( @$chunk == 1 ) ]
     } ## end foreach my $chunk (@base_diff)
 

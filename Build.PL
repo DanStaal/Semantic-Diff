@@ -12,7 +12,7 @@ Module::Build->new(
                   perl            => 'v5.10.0',
                   Algorithm::Diff => '1.1902',
                 },
-    test_requires => {},
+    test_requires => { Test::Differences => '0', },
 
     # These are volatile.
     release_status => 'unstable',
