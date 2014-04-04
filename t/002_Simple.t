@@ -3,13 +3,13 @@ use Test::Differences;
 
 # First Tests check to make sure we have the same output as Algorithm::Diff.
 use Algorithm::Diff qw(diff);
-use Text::SemanticDiff qw(sdiff sementic_diff);
+use Text::SemanticDiff qw(sdiff semantic_diff);
 
 my @test1 = qw(a b c);
 my @test2 = qw(a b c);
 
 my @expected = diff( \@test1, \@test2 );
-my @result = sementic_diff( \@test1, \@test2 );
+my @result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Identical - Alogrithm::Diff' );
 
@@ -18,7 +18,7 @@ eq_or_diff( \@result, \@expected, 'Identical - Alogrithm::Diff' );
 @test2 = qw(a b c);
 
 @expected = diff( \@test1, \@test2 );
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 # We verify sdiff is working here a moment.
 eq_or_diff( \@result, \@expected, 'Add one - Alogrithm::Diff' );
@@ -30,7 +30,7 @@ eq_or_diff( \@result, \@expected, 'sdiff of Add one.' );
 @test2 = qw(a c);
 
 @expected = diff( \@test1, \@test2 );
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Remove one - Algorithm::Diff' );
 
@@ -39,7 +39,7 @@ eq_or_diff( \@result, \@expected, 'Remove one - Algorithm::Diff' );
 @test2 = qw(a c c);
 
 @expected = diff( \@test1, \@test2 );
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Change one - Algorithm::Diff' );
 
@@ -48,7 +48,7 @@ eq_or_diff( \@result, \@expected, 'Change one - Algorithm::Diff' );
 @test2 = qw(b c d e f j k l m r s t);
 
 @expected = diff( \@test1, \@test2 );
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Long Sequence - Algorithm::Diff' );
 
@@ -56,7 +56,7 @@ eq_or_diff( \@result, \@expected, 'Long Sequence - Algorithm::Diff' );
 @test2 = ( 'a', 'b', 'e', 'Hello there', 'd' );
 
 @expected = diff( \@test1, \@test2 );
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Words 1 - Algorithm::Diff' );
 
@@ -64,7 +64,7 @@ eq_or_diff( \@result, \@expected, 'Words 1 - Algorithm::Diff' );
 @test2 = ( 'a', 'b', 'c', 'Hello Miss',  'd' );
 
 @expected = diff( \@test1, \@test2 );
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Words 2 - Algorithm::Diff' );
 
@@ -84,7 +84,7 @@ eq_or_diff( \@result, \@expected, 'Words 2 - Algorithm::Diff' );
                   ] ]
              ] ];
 
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'First sub-change.' );
 
@@ -101,7 +101,7 @@ eq_or_diff( \@result, \@expected, 'First sub-change.' );
                   ] ]
              ] ];
 
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Multiple sub-changes.' );
 
@@ -119,7 +119,7 @@ eq_or_diff( \@result, \@expected, 'Multiple sub-changes.' );
                 ] ]
             );
 
-@result = sementic_diff( \@test1, \@test2 );
+@result = semantic_diff( \@test1, \@test2 );
 
 eq_or_diff( \@result, \@expected, 'Changes and sub-changes.' );
 

@@ -126,13 +126,13 @@ sub semantic_diff {
 
 =head1 NAME
 
-Text::SementicDiff - Creates Sementic Diffs of Text files.
+Text::SemanticDiff - Creates Semantic Diffs of Text files.
 
 =head1 SYNOPSIS
 
-  use Text::SementicDiff;
-  blah blah blah
+  use Text::SemanticDiff;
 
+  my @diff = sdiff(/@old, /@new);
 
 =head1 DESCRIPTION
 
@@ -178,7 +178,7 @@ LICENSE file included with this module.
 
 =head1 SEE ALSO
 
-perl(1).
+perl(1), Algorithm::Diff
 
 =cut
 
