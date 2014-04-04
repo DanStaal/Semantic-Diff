@@ -1,7 +1,7 @@
 package Text::SementicDiff;
 use strict;
 use warnings;
-use 5.10.0;   # The '//' operator requires 5.10 or greater.
+use 5.10.0;    # The '//' operator requires 5.10 or greater.
 
 use Algorithm::Diff qw(diff);
 
@@ -68,7 +68,7 @@ sub sementic_diff {
 
             # Save it into the array of changes.
             # Indexed into the @sementic_diff array, for easer access later.
-            $sementic_diff[ $$line[1] ] = $diff_ref;
+            $semetic_diff[ $$line[1] ] = $diff_ref;
         } ## end foreach my $line ( @{$chunk...})
         continue { $last = $line; } # Save a copy of the line for the next time.
     } ## end foreach my $chunk (@base_diff)
@@ -89,27 +89,27 @@ sub sementic_diff {
 
                 # If we have a change for this line,
                 # then copy it over instead of the new line.
-                if (
-                    defined( $sementic_diff[ $$line[1] ] ) {
+                if ( defined( $semetic_diff[ $$line[1] ] ) ) {
 
-                        # No doubles - Only once, on the 'add'.
-                        if ( $$line[0] eq '+' ) {
-                            push @new_chunk,
-                              ( '!', $$line[1], $sementic_diff[ $$line[1] ] );
-                        }
-                    } else    # If we do *not* have an inside-line diff.
-                    {
-                        push @new_chunk, @$line;
+                    # No doubles - Only once, on the 'add'.
+                    if ( $$line[0] eq '+' ) {
+                        push @new_chunk,
+                          ( '!', $$line[1], $semetic_diff[ $$line[1] ] );
                     }
-                } ## end foreach my $line (@$chunk)
+                } ## end if ( defined( $semetic_diff...))
+                else    # If we do *not* have an inside-line diff.
+                {
+                    push @new_chunk, @$line;
+                }
+            } ## end foreach my $line (@$chunk)
 
-                # Now write the new chunk to the results.
-                push @result_diff, @new_chunk;
-            } ## end else [ if ( @$chunk == 1 ) ]
-        } ## end foreach my $chunk (@base_diff)
+            # Now write the new chunk to the results.
+            push @result_diff, @new_chunk;
+        } ## end else [ if ( @$chunk == 1 ) ]
+    } ## end foreach my $chunk (@base_diff)
 
-      return @result_diff;
-    } ## end sub sementic_diff
+  return @result_diff;
+} ## end sub sementic_diff
 
 #################### main pod documentation begin ###################
 ## Below is the stub of documentation for your module.
@@ -175,6 +175,6 @@ perl(1).
 
 #################### main pod documentation end ###################
 
-    1;
+1;
 
 # The preceding line will help the module return a true value
